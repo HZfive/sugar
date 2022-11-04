@@ -97,7 +97,7 @@ pub async fn process_deploy(args: DeployArgs) -> Result<()> {
 
     let cache_items_sans_collection = (cache.items.len() - collection_in_cache as usize) as u64;
 
-    if num_items != cache_items_sans_collection {
+    if num_items != cache_items_sans_collection && !hidden {
         return Err(anyhow!(
             "Number of items ({}) do not match cache items ({}). 
             Item number in the config should only include asset files, not the collection file.",
